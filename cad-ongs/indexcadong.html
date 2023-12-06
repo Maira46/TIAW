@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cadastro de instituições </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="stylecadong.css">
+</head>
+
+<body onload="init()">
+    <h1>Cadastro de Instituições</h1>
+
+    <div class="container">
+        <div class="row">
+            <div id="msg" class="col-sm-10 offset-sm-1 ">
+                <!--<div class="alert alert-warning">Instituição não encontrada.</div>-->
+            </div>
+        </div>
+
+        <form id="form-instituicao">
+
+            <div class="form-group row">
+                <div class="col-sm-4">
+                    <label for="inputId">Id</label>
+                    <input type="text" class="form-control" id="inputId" placeholder="ID" disabled>
+                </div>
+                <div class="col-sm-8">
+                    <label for="inputNome">Nome da instituição (*)</label>
+                    <input type="text" class="form-control" id="inputNome" required
+                        placeholder="Informe o nome da Instituição">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-5">
+                    <label for="inputTelefone">Telefone (*)</label>
+                    <input type="text" class="form-control" id="inputTelefone" required placeholder="Telefone">
+                </div>
+                <div class="col-sm-7">
+                    <label for="inputRedeSocial">Rede social</label>
+                    <input type="text" class="form-control" id="inputRedeSocial" required
+                        placeholder=" Informe a rede social mais utilizada pela instituição">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-6">
+                    <label for="inputCidade">Cidade</label>
+                    <input type="text" class="form-control" id="inputCidade"
+                        placeholder="Informe a cidade da Instituição">
+                </div>
+                <div class="col-sm-6">
+                    <label for="inputCategoria">Categoria</label>
+                    <input type="text" class="form-control" id="inputCategoria" required
+                        placeholder="Informe a categoria da Instituição (ONG/Grupo de Proteção)">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-7">
+                    <label for="inputDescricao">Descrição</label>
+                    <input type="text" class="form-control" id="inputDescricao" required
+                        placeholder="Adicione uma breve descrição sobre a instituição">
+                </div>
+
+                <div class="col-sm-5">
+                    <label for="inputImagem">Imagem</label>
+                    <input type="text" class="form-control" id="inputImagem" required
+                        placeholder="URL da imagem da instituição">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-4">
+                    <small>(*) Campos obrigatórios</small>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-12">
+                    <input type="button" class="btn btn-success" id="btnInsert" value="Inserir">
+                    <input type="button" class="btn btn-warning" id="btnUpdate" value="Alterar">
+                    <input type="button" class="btn btn-danger" id="btnDelete" value="Excluir">
+                    <input type="button" class="btn btn-secondary" id="btnClear" value="Limpar Form">
+                    <a href="lista_ongs.html"><input type="button" class="btn btn-warning" id="btnClear"
+                            value="Pesquisar Instituições"></a>
+                            <a href="../login-ongeusu/indexlogin.html"><button type="button" class="btn btn-dark">Voltar</button></a>
+                </div>
+            </div>
+        </form>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="table-responsive">
+                    <table id="grid-instituicoes" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nome</th>
+                                <th scope="col">Telefone</th>
+                                <th scope="col">Cidade</th>
+                                <th scope="col">Categoria</th>
+                                <th scope="col">Redes Sociais</th>
+                                <th scope="col">Descrição</th>
+                                <th scope="col">Imagem (URL)</th>
+
+                            </tr>
+                        </thead>
+                        <tbody id="table-instituicoes">
+                            <tr>
+                                <td scope="row">1</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="appcadongs.js"></script>
+    <script>
+        function exibeInstituicoes() {
+            tableInstituicoes = document.getElementById("table-instituicoes");
+
+            // Remove todas as linhas do corpo da tabela
+            tableInstituicoes.innerHTML = "";
+
+            readInstituicoes(dados => {
+                // Popula a tabela com os registros do banco de dados
+                for (i = 0; i < dados.length; i++) {
+                    let instituicao = dados[i];
+                    tableInstituicoes.innerHTML += `<tr><td scope="row">${instituicao.id}</td>
+                                                    <td>${instituicao.nome}</td>
+                                                    <td>${instituicao.telefone}</td>
+                                                    <td>${instituicao.cidade}</td>
+                                                    <td>${instituicao.categoria}</td>
+                                                    <td>${instituicao.redesocial}</td>
+                                                    <td>${instituicao.descricao}</td>
+                                                    <td>${instituicao.imagem}</td>
+                                                </tr>`;
+                }
+            })
+        }
+
+        function init() {
+            // Define uma variável para o formulário de instituições
+            formInstituicao = document.getElementById("form-instituicao");
+
+            // Adiciona funções para tratar os eventos 
+            btnInsert = document.getElementById("btnInsert");
+            btnInsert.addEventListener('click', function () {
+                // Verifica se o formulário está preenchido corretamente
+                if (!formInstituicao.checkValidity()) {
+                    displayMessage("Preencha o formulário corretamente.");
+                    return;
+                }
+
+                // Obtem os valores dos campos do formulário
+                let campoNome = document.getElementById('inputNome').value;
+                let campoTelefone = document.getElementById('inputTelefone').value;
+                let campoCidade = document.getElementById('inputCidade').value;
+                let campoCategoria = document.getElementById('inputCategoria').value;
+                let campoRedeSocial = document.getElementById('inputRedeSocial').value;
+                let campoDescricao = document.getElementById('inputDescricao').value;
+                let campoImagem = document.getElementById('inputImagem').value;
+
+                // Cria um objeto com os dados da instituição
+                let instituicao = {
+                    nome: campoNome,
+                    telefone: campoTelefone,
+                    cidade: campoCidade,
+                    categoria: campoCategoria,
+                    redesocial: campoRedeSocial,
+                    descricao: campoDescricao,
+                    imagem: campoImagem
+                };
+
+                // Cria a instutuicao no banco de dados
+                createInstituicao(instituicao, exibeInstituicoes);
+
+                // Limpa o formulario
+                formInstituicao.reset()
+            });
+
+            // Trata o click do botão Alterar
+            btnUpdate = document.getElementById("btnUpdate");
+            btnUpdate.addEventListener('click', function () {
+                // Obtem os valores dos campos do formulário
+                let campoId = document.getElementById("inputId").value;
+                if (campoId == "") {
+                    displayMessage("Selecione antes uma instituição para ser alterado.");
+                    return;
+                }
+
+                // Obtem os valores dos campos do formulário
+                let campoNome = document.getElementById('inputNome').value;
+                let campoTelefone = document.getElementById('inputTelefone').value;
+                let campoCidade = document.getElementById('inputCidade').value;
+                let campoCategoria = document.getElementById('inputCategoria').value;
+                let campoRedeSocial = document.getElementById('inputRedeSocial').value;
+                let campoDescricao = document.getElementById('inputDescricao').value;
+                let campoImagem = document.getElementById('inputImagem').value;
+
+
+                // Cria um objeto com os dados da instituição
+                let instituicao = {
+                    nome: campoNome,
+                    telefone: campoTelefone,
+                    cidade: campoCidade,
+                    categoria: campoCategoria,
+                    redesocial: campoRedeSocial,
+                    descricao: campoDescricao,
+                    imagem: campoImagem
+                };
+
+                // Altera a instituicao no banco de dados
+                updateInstituicao(parseInt(campoId), instituicao, exibeInstituicoes);
+
+                // Limpa o formulario
+                formInstituicao.reset()
+            });
+
+            // Trata o click do botão Excluir
+            btnDelete = document.getElementById('btnDelete');
+            btnDelete.addEventListener('click', function () {
+                let campoId = document.getElementById('inputId').value;
+                if (campoId == "") {
+                    displayMessage("Selecione uma instituição a ser excluído.");
+                    return;
+                }
+
+                // Exclui a instituição no banco de dados
+                deleteInstituicao(parseInt(campoId), exibeInstituicoes);
+
+                // Limpa o formulario
+                formInstituicao.reset()
+            });
+
+            // Trata o click do botão Listar instituições
+            btnClear = document.getElementById('btnClear');
+            btnClear.addEventListener('click', function () {
+                formInstituicao.reset()
+            });
+
+            // Oculta a mensagem de aviso após alguns 5 segundos
+            msg = document.getElementById('msg');
+            msg.addEventListener("DOMSubtreeModified", function (e) {
+                if (e.target.innerHTML == "") return;
+                setTimeout(function () {
+                    alert = msg.getElementsByClassName("alert");
+                    alert[0].remove();
+                }, 5000);
+            })
+
+            // Preenche o formulário quando o usuario clicar em uma linha da tabela 
+            gridInstituicoes = document.getElementById("grid-instituicoes");
+            gridInstituicoes.addEventListener('click', function (e) {
+                if (e.target.tagName == "TD") {
+
+                    // Obtem as colunas da linha selecionada na tabela
+                    let linhaInstituicao = e.target.parentNode;
+                    colunas = linhaInstituicao.querySelectorAll("td");
+
+                    // Preenche os campos do formulário com os dados da linha selecionada na tabela
+                    document.getElementById('inputId').value = colunas[0].innerText;
+                    document.getElementById('inputNome').value = colunas[1].innerText;
+                    document.getElementById('inputTelefone').value = colunas[2].innerText;
+                    document.getElementById('inputCidade').value = colunas[3].innerText;
+                    document.getElementById('inputCategoria').value = colunas[4].innerText;
+                    document.getElementById('inputRedeSocial').value = colunas[5].innerText;
+                    document.getElementById('inputDescricao').value = colunas[6].innerText;
+                    document.getElementById('inputImagem').value = colunas[7].innerText;
+
+                }
+            });
+
+            exibeInstituicoes();
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,209 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+    flex-direction: column; /* Alteração para layout em coluna */
+}
+
+.lateralEsquerda,
+.lateralDireita {
+    flex: 1;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000000;
+    padding: 10px;
+    color: #fff;
+    margin-bottom: 10px; /* Adição de margem inferior */
+}
+
+.nav_icons {
+    list-style: none;
+    display: flex;
+}
+
+.nav_icons li {
+    margin-left: 10px; /* Redução da margem esquerda */
+}
+
+.buscaSite {
+    display: flex;
+    background-color: #128c7e;
+    padding: 10px;
+    margin-bottom: 10px; /* Adição de margem inferior */
+}
+
+.buscaSite input {
+    flex: 1;
+    height: 25px; /* Redução da altura */
+    border: none;
+    border-radius: 20px;
+    padding: 5px;
+    margin-right: 10px;
+    font-size: 0.8em; /* Redução do tamanho da fonte */
+}
+
+.blococontato {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 5px; /* Adição de margem inferior */
+}
+
+.blococontato:hover,
+.blococontato.active {
+    background-color: #e1ddd9;
+}
+
+.nomeONG span{
+    background-color: green;
+}
+
+.imgbox img {
+    width: 40px; /* Redução do tamanho da imagem */
+    border-radius: 50%;
+    margin-bottom: 5px; /* Adição de margem inferior */
+}
+
+.detalhes {
+    flex: 1;
+}
+
+.topolista h5,
+.topolista p {
+    margin: 0;
+    font-size: 0.9em; /* Redução do tamanho da fonte */
+}
+
+.time {
+    color: #aaa;
+    font-size: 0.7em; /* Redução do tamanho da fonte */
+}
+
+.texto {
+    color: #111;
+    font-size: 0.9em; /* Redução do tamanho da fonte */
+}
+
+.msg_p p {
+    margin: 0;
+    font-size: 0.9em; /* Redução do tamanho da fonte */
+}
+
+.lateralDireita {
+    border-left: 1px solid #ccc;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.imgText {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* Adição de margem inferior */
+}
+
+.imgText h4 {
+    font-size: 1em; /* Redução do tamanho da fonte */
+    margin: 0 5px; /* Redução da margem */
+    color: #fff;
+}
+
+.imgText span {
+    color: #ccc;
+    font-size: 0.7em; /* Redução do tamanho da fonte */
+}
+
+.chats {
+    overflow-y: auto;
+    max-height: calc(100vh - 230px); /* Ajuste da altura máxima */
+    padding: 10px;
+    margin-bottom: 10px; /* Adição de margem inferior */
+    display:flex;
+    justify-content: space-between;
+}
+
+.mensagem {
+    margin: 5px 0; /* Redução da margem */
+}
+
+.mensagem p {
+    padding: 8px;
+    border-radius: 8px;
+    font-size: 0.9em;
+    max-width: 65%;
+    color: #fff;
+}
+
+.minha_msg p,
+.amigo_msg p {
+    font-size: 0.9em; /* Redução do tamanho da fonte */
+}
+
+.mensagem p span {
+    display: block;
+    margin-top: 3px; /* Redução da margem superior */
+    font-size: 0.8em; /* Redução do tamanho da fonte */
+    opacity: 0.8;
+    color: #ccc;
+}
+
+.mensagemInput {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    padding: 10px;
+    position: sticky;
+    bottom: 0;
+}
+
+ion-icon{
+    font-size: 15px;
+}
+
+.mensagemInput ion-icon {
+    cursor: pointer;
+    font-size: 1.5em; /* Redução do tamanho da fonte */
+    color: #128c7e;
+    margin-right: 10px; /* Redução da margem direita */
+}
+
+.mensagemInput input {
+    flex: 1;
+    border: none;
+    outline: none;
+    border-radius: 20px; /* Ajuste do raio da borda */
+    padding: 8px 15px; /* Ajuste do preenchimento */
+    font-size: 0.9em; /* Redução do tamanho da fonte */
+}
+
+.mensagemInput button {
+    background-color: #25d366;
+    color: #fff;
+    border: none;
+    padding: 8px 15px; /* Ajuste do preenchimento */
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+    font-size: 0.9em; /* Redução do tamanho da fonte */
+}
+
+.mensagemInput button:hover {
+    background-color: #128c7e;
+}

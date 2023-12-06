@@ -1,0 +1,94 @@
+
+  
+  .navbar {
+    background-color: black !important;
+  
+  }
+  
+  input{
+    width: 90%;
+    height: 50px;
+    padding-left: 20px;
+    font-size:22px;
+    border:1px solid #ffffff;
+    margin:15px;
+    border-radius:5px;
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+    box-shadow: 0 0 10px #53438d;
+  }
+  
+  .card {
+      background-color: #e6dbf0;
+      box-shadow: 0 0 10px #53438d;
+  }
+  
+  form{
+    margin: 0 auto;
+    max-width: 800px;
+    padding-right: 20px;
+  }
+
+  form button {
+    margin: 0 auto;
+    cursor: pointer;
+    width: 50%;
+    margin-top: 35px;
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    margin: 0 auto;
+      text-align: center;
+      margin-bottom: 35px;
+      padding-top: 10px;
+      
+    }
+
+    body{
+        background-color: white;
+      }
+      .container{
+        max-width: 800px;
+        border-radius: 18px;
+        padding-bottom: 1px;  
+        background-color: rgb(230, 219, 240);
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+        box-shadow: 0 0 10px #53438d;
+        margin-top: 40px;    
+        margin-bottom: 14px;      
+      }
+
+      input, textarea {
+        border: none;
+        border-radius: 10px;
+        box-shadow: 1px 1px 6px #0000001c;
+        
+      }
+      
+      input:hover{
+        background-color: rgb(228, 226, 226);
+      }
+      
+      textarea:hover{
+        background-color: rgb(228, 226, 226);
+      }
+
+      img{
+        height: 100px;
+        width: 370px;
+        display: block;
+        margin: 0 auto;
+         background-color: rgb(230, 219, 240);
+        display: none;
+      }
+      
+      .form-group{
+        margin-top: 20px;
+      }
+
+      @media screen and (max-width: 700px) {
+        img{
+        display: none;
+        }
+        
+        }

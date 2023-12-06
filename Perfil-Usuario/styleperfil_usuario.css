@@ -1,0 +1,59 @@
+label {
+    font-weight: bolder;
+}
+::placeholder {
+  color: #c7c7c7  !important;
+  opacity: 3;
+}
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+  color:  #c7c7c7 !important;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color: #c7c7c7  !important;
+  opacity:  3;
+  }
+ h1 { color: black;
+     text-align: center;
+  
+ }
+
+.navbar {
+background-color: black !important;
+}
+
+.user-info {
+    border: 1px solid #ddd;
+    width: 90%;
+  height: 7%;
+  background-color: #E6DBF0;
+}
+
+.animal-card {
+    border: 1px solid #ddd;
+    padding: 2%;
+    margin: 1%;
+    width: 40%;
+  background-color: #e6dbf0;
+   box-shadow: 0 0 10px #53438D;
+}
+
+
+
+.form-group-row{
+  text-align: center;
+}
+#user-info{background-color: #E6DBF0;
+          border: 1px solid #ddd;
+            padding: 2.%;
+            margin: 3.5%;
+            width: 90%;
+          height: 5%;
+          border-radius:5px;
+          box-shadow: 0 0 10px #53438D;}
+
+#animal-cards{
+  padding: 2.%;
+  margin: 3.5%;
+  width: 90%;
+height: 5%;}
+

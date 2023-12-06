@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-Br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="cadusuarios.css">
+  <script src="https://kit.fontawesome.com/cf6fa412bd.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Cadastre-se</h1>
+
+    <form id="form">
+  
+      <input type="text" placeholder="Nome" id="name" />
+      <input type="text" placeholder="Email" id="email" />
+      <input type="text" placeholder="Instituição / Pessoa comum" id="caracteristica" />
+      <input type="password" placeholder="Password" id="senha"/>
+      
+
+      <button type="submit" >Cadastre-se</button>
+      <button type="button" onclick="window.location.href='../login-ongeusu/indexlogin.html'" >Voltar</button>
+    </form>
+
+  </div>
+
+  <!--<script src="cadusuarios.js"></script>-->
+</body>
+<script>
+document.getElementById('form').addEventListener('submit', function (event) {
+  event.preventDefault();
+
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const caracteristica = document.getElementById('caracteristica').value;
+  const senha = document.getElementById('senha').value;
+  
+
+  const camposPreenchidos = [name, email, caracteristica, senha]
+
+  if (camposPreenchidos.every(valor => valor.trim() !== '')) {
+    
+    const formData = {
+      nome: name,
+      email: email,
+      caracteristica: caracteristica,
+      senha: senha
+    };
+
+    
+    fetch('https://jsonserver-cadastro-usuarios.thaisthatareis.repl.co/usuarios', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData)
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Dados enviados:', data);
+
+        alert('Cadastro realizado com sucesso');
+
+        document.getElementById('name').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('caracteristica').value = '';
+        document.getElementById('senha').value = '';
+      })
+      .catch(error => {
+        console.error('Erro:', error);
+      });
+  } else {
+
+    alert('Preencha todos os campos do formulário.');
+
+    setTimeout(function () {
+      const inputs = document.querySelectorAll('input');
+      for (let input of inputs) {
+        if (input.value.trim() === '') {
+          input.focus();
+        }
+      }
+    }, 5000); 
+  }
+});
+</script>
+</html>

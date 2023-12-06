@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cadastro de Animais</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="stylecadong.css">
+</head>
+
+<body>
+    <h1>Listagem de Instituições</h1>
+
+    <div class="container">
+        <div class="row">
+            <div id="msg" class="col-sm-10 offset-sm-1 ">
+                <!--<div class="alert alert-warning">Instituição não encontrada.</div>-->
+            </div>
+        </div>
+
+        <div class="row">
+            <div id="msg" class="col-sm-2 offset-sm-10 ">
+                <a href="indexcadong.html"><input type="button" class="btn btn-warning" id="btnClear" value="Cadastro"></a>
+            </div>
+        </div>
+
+        <form id="form-instituicao">
+            <div class="form-group row">
+                <div class="col-sm-4">
+                    <select name="filtro_cidade" id="filtro_cidade" onchange="ListaInstituicoes()" class="form-control">
+                        <option value="">Selecione a Cidade</option>
+                        <option value="Rio de Janeiro">Rio de Janeiro</option>
+                        <option value="São Paulo">São Paulo</option>
+                        <option value="Juiz de Fora">Juiz de Fora</option>
+                      <option value="Juatuba">Juatuba</option>
+                    </select>
+                </div>
+                <div class="col-sm-8">
+                    <select name="filtro_categoria" id="filtro_categoria" onchange="ListaInstituicoes()"
+                        class="form-control">
+                        <option value="">Selecione a Categoria</option>
+                        <option value="ONG">ONG</option>
+                        <option value="Grupo de Proteção">Grupo de Proteção</option>
+
+                    </select>
+                </div>
+            </div>
+        </form>
+
+
+        <div class="row">
+
+            <div class="col-sm-12">
+                <div class="table-responsive">
+                    <table id="grid-instituicoes" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nome</th>
+                                <th scope="col">Telefone</th>
+                                <th scope="col">Cidade</th>
+                                <th scope="col">Categoria</th>
+                                <th scope="col">Rede Social</th>
+                                <th scope="col">Descrição</th>
+                                <th scope="col">Imagem</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-instituicoes">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="appcadongs.js"></script>
+    <script>
+        // carrega os dados a partir da API JSONServer
+        var db = []
+        readInstituicoes(dados => {
+            db = dados;
+            ListaInstituicoes()
+        });
+
+        // função para listar na tabela as instituições que estão associados aos filtros 
+        function ListaInstituicoes() {
+
+            // Obtem os dados informados pelo usuário nos filtros
+            let fc = document.getElementById('filtro_cidade').value;
+            let fcg = document.getElementById('filtro_categoria').value;
+
+            // limpa a lista de instituições apresentados
+            tableInstituicoes = document.getElementById("table-instituicoes");
+            tableInstituicoes.innerHTML = "";
+
+            // Popula a tabela com os registros do banco de dados
+            for (let index = 0; index < db.length; index++) {
+                const instituicao = db[index];
+
+                // Verifica se os dados do instituicao batem com os filtros
+                if (((instituicao.cidade == fc) || (fc == '')) &&
+                    ((instituicao.categoria == fcg) || (fcg == ''))) {
+
+                    // Inclui a instituicao na tabela    
+                    tableInstituicoes.innerHTML += `<tr><td scope="row">${instituicao.id}</td>
+                                                    <td>${instituicao.nome}</td>
+                                                    <td>${instituicao.telefone}</td>
+                                                    <td>${instituicao.cidade}</td>
+                                                    <td>${instituicao.categoria}</td>
+                                                    <td>${instituicao.redesocial}</td>
+                                                    <td>${instituicao.descricao}</td>
+                                                    <td>${instituicao.imagem}</td>
+                                                </tr>`;
+                }
+            }
+
+        }
+    </script>
+
+</body>
+
+</html>

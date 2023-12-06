@@ -1,0 +1,38 @@
+main{
+    font-family: 'Poppins', sans-serif;
+    padding:0;
+    margin: 40px;
+}
+
+.navbar {
+  background-color: black !important;
+
+}
+
+.buscar{
+    width: 100%;
+    background: #ffffff;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  
+}
+
+input{
+    width: 90%;
+    height: 50px;
+    padding-left: 20px;
+    font-size:22px;
+    border:1px solid #ffffff;
+    margin:15px;
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+    box-shadow: 0 0 10px #53438d;
+}
+
+  .card {
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+    box-shadow: 0 0 10px #53438d;
+  }
+

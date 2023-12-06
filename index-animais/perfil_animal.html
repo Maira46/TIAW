@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styleperfil_animais.css">
+    <title>Formulário</title>
+</head>
+
+
+
+
+<body>
+    <div class="container">
+        <div class="form-image">
+            <img src="" class="animais" alt="">
+        </div>
+        <div class="form">
+            <form action="../index-animais/indexpag_animais.html">
+                <div class="form-header">
+                    <div class="title">
+                        <h1 id="animal-nome"></h1>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <div class="input-box">
+                        <h2 id="animal-descricao"></h2>
+                        <br>
+                        <p>Idade: <span id="animal-idade"></span></p>
+                        <br>
+                        <p>Porte: <span id="animal-porte"></span></p>
+                        <br><br><br>
+                    </div>
+                </div>
+            </form>
+
+            <button><a href="../form-adoção/indexform_adocao.html">Quero adotar!</a></button>
+            <br>
+            <button><a href="../index-animais/indexpag_animais.html">Voltar</a></button>
+        </div>
+    </div>
+    <script>
+
+        const url = 'https://jsonserver-animais.geoprtu.repl.co/animais';
+
+
+        async function fetchAnimalDataById(animalId) {
+            try {
+                const response = await fetch(`${url}/${animalId}`);
+                const animalData = await response.json();
+
+                document.getElementById("animal-nome").textContent = animalData.nome;
+                document.querySelector(".animais").src = animalData.imagem;
+                document.getElementById("animal-descricao").textContent = animalData.descricao;
+                document.getElementById("animal-idade").textContent = animalData.idade;
+                document.getElementById("animal-porte").textContent = animalData.porte;
+            } catch (error) {
+                console.error('Erro ao buscar os dados:', error);
+            }
+        }
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const animalId = urlParams.get('id');
+
+        fetchAnimalDataById(animalId);
+
+    </script>
+
+
+</body>
+
+</html>

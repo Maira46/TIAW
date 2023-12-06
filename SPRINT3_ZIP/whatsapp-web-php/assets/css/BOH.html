@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-ba<!DOCTYPE html> <html lang=" pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial scale=1.0">
+    <title>Mensagens PETISCO</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <link rel="shortcut icon"
+        href="https://storage.googleapis.com/sealpolen-files.polinizador.com.br/blob/ongs/ong-amigonaosecompra-logo.png"
+        type="image/x-icon">
+</head>
+
+<body>
+
+    
+
+    <div class="container">
+        <div class="lateralEsquerda">
+            <div class="header">
+                <style>
+                    /* Estilo para o link */
+                    a {
+                      color: white; /* Cor do texto */
+                      text-decoration: none; /* Remove o sublinhado */
+                    }
+                  </style>
+                <div class="box-img">   
+                    <a href="javascript:history.back()">Voltar</a> </div>
+                <ul class="nav_icons">
+                    <li><ion-icon name="scan-circle-outline"></ion-icon></li>
+                    <li><ion-icon name="chatbox"></ion-icon></li>
+                    <li><ion-icon name="ellipsis-vertical"></ion-icon></li>
+                </ul>
+            </div>
+            <div class="buscaSite">
+                <div> <input type="text" name="" id="searchInput" placeholder="buscar uma conversa" oninput="searchContacts()"> <ion-icon
+                        name="search-outline"></ion-icon> </div>
+            </div>
+            <div class="blococontato naolida" onclick="swap()">
+                <div class="imgbox">
+                    <img src="https://observatorio3setor.org.br/wp-content/uploads/2021/07/AdobeStock_124563900.jpeg" width="200px" alt="Imagem de perfil">
+                </div>
+                <div class="detalhes">
+                    <div class="topolista">
+                        <h5 class="nomeONG2">ONG ANIMAILS</h5>
+                        <p class="time">10:45</p>
+                        <p class="texto">Olá, tudo bem?</p>
+                    </div>
+                </div>
+            </div>
+            <div class="blococontato naolida" onclick="swap()">
+                <div class="imgbox">
+                    <img src="https://love.doghero.com.br/wp-content/uploads/2020/05/photo-1444212477490-ca407925329e-1024x640.jpg" width="200px" alt="Imagem de perfil">
+                </div>
+                <div class="detalhes">
+                    <div class="topolista">
+                        <h5 class="nomeONG2">ONG DOGZZ </h5>
+                        <p class="time">9:27</p>
+                        <p class="texto">Oii <br> Separa ele p mim pff!!</p>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="lateralDireita">
+                <div class="header">
+                    <div class="imgText">
+                        <div class="box-img">
+                            <img src="https://vereadorafernandamoreno.com.br/wp-content/uploads/2020/12/Protetor-de-animais.jpg" width="200px" alt="Logo Petisco">
+                        </div>
+                        <h4 class="nomeONG">ONG PETZZ online</h4>
+                    </div>
+                    <ul class="nav_icons">
+                        <li><ion-icon name="chatbox-outline"></ion-icon></li>
+                        <li><ion-icon name="camera-outline"></ion-icon></li>
+                        <li><ion-icon name="search-outline"></ion-icon></li>
+                        <li><ion-icon name="ellipsis-vertical"></ion-icon></li>
+                    </ul>
+                </div>
+                <p class="mensagem">Em que podemos ajudar?<br> <span>17:30</span></p>
+                <div class="chats">
+                    <div class="mensagem pessoa-msg">
+                        <p>ONG Z</p>
+                    </div>
+                    <div class="mensagem minha_msg">
+                       
+                    </div>
+                </div>
+                <div class="mensagemInput"> <ion-icon name="happy-outline"></ion-icon> <ion-icon name="attach-outline" style="transform: rotate();"></ion-icon> <input type="text" id="mensagemInput" placeholder="Digite sua mensagem"> <button onclick="enviarMensagem()">Enviar</button> </div>
+            </div>
+    </div>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial scale=1.0">
+    <title>Mensagens PETISCO</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon"
+        href="https://storage.googleapis.com/sealpolen-files.polinizador.com.br/blob/ongs/ong-amigonaosecompra-logo.png"
+        type="image/x-icon">
+</head>
+
+<body>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Criar objeto JSON com informações da página
+            var jsonData = {
+                ong1: {
+                    name: "ONG ANIMAILS",
+                    lastMessage: "Olá, tudo bem?",
+                    time: "10:45",
+                    image: "https://observatorio3setor.org.br/wp-content/uploads/2021/07/AdobeStock_124563900.jpeg"
+                },
+                ong2: {
+                    name: "ONG DOGZZ",
+                    lastMessage: "Oii",
+                    time: "9:27",
+                    image: "https://love.doghero.com.br/wp-content/uploads/2020/05/photo-1444212477490-ca407925329e-1024x640.jpg"
+                },
+                ongPet: {
+                    name: "ONG PETZZ",
+                    status: "online",
+                    image: "https://vereadorafernandamoreno.com.br/wp-content/uploads/2020/12/Protetor-de-animais.jpg"
+                }
+                // Adicione mais informações conforme necessário
+            };
+
+            // Converter objeto JSON em uma string
+            var jsonString = JSON.stringify(jsonData);
+
+            // Exibir a string JSON no console (você pode fazer o que quiser com ela)
+            console.log(jsonString);
+        });
+    </script>
+</body>
+
+</html>

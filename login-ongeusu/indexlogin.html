@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-Br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="stylelogin.css">
+  <script src="https://kit.fontawesome.com/cf6fa412bd.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <div class="container">
+    <div class="buttonsForm">
+      <div class="btnColor"></div>
+      <button id="btnSignin">Usuario</button>
+      <button id="btnSignup">Ongs</button>
+    </div>
+
+    <form id="usuario">
+      <input type="text" placeholder="Email" />
+      <i class="fas fa-envelope iEmail"></i>
+      <input type="password" placeholder="Password" />
+      <i class="fas fa-lock iPassword"></i>
+      <div class="divCheck">
+        <a href="">Esqueceu a Senha?</a>
+      </div>
+      <button type="submit">Entrar</button>
+      <button type="button" onclick="window.location.href='../cadastro-usuarios/cadusuarios.html'">Cadastre-se</button>
+      <button type="button" onclick="window.location.href='../index-animais/indexpag_animais.html'" >Voltar</button>
+    </form>
+
+    <form id="ong">
+      <input type="text" placeholder="Email" />
+      <i class="fas fa-envelope iEmail"></i>
+      <input type="password" placeholder="Password" />
+      <i class="fas fa-lock iPassword"></i>
+      <div class="divCheck">
+        <a href="">Esqueceu a Senha?</a>
+      </div>
+      <button type="submit">Entrar</button>
+      <button type="button" onclick="window.location.href='../cad-ongs/indexcadong.html'">Cadastre-se</button>
+      <button type="button" onclick="window.location.href='../index-animais/indexpag_animais.html'" >Voltar</button>
+    </form>
+  </div>
+
+  <script src="applogin.js"></script>
+</body>
+</html>

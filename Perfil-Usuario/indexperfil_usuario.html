@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styleperfil_usuario.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <title>Perfil de Usuário</title>
+    <style>
+        a :link {
+        color:black ;}
+    </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+      <div class="container-fluid">
+          <a class="navbar-brand text-white" href="">Página do Usuário</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+              aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav ms-auto">
+                  <a class="nav-link active text-white" aria-current="page"
+                      href="../login-ongeusu/indexlogin.html"></a>
+                  <a class="nav-link text-white" href="../cad-animais/indexcadanimais.html">Cadastrar Animal</a>
+                  <a class="nav-link text-white" href="../SPRINT3_ZIP/whatsapp-web-php/assets/css/BOH.html">Mensagens</a>
+                  <a class="nav-link text-white" href="../tabela-form/indextabela_form.html">Formulário</a>
+                  <a class="nav-link text-white" href="../index-animais/indexpag_animais.html">Voltar</a>
+                  <a class="nav-link disabled" aria-disabled="true"></a>
+              </div>
+          </div>
+      </div>
+  </nav>
+
+  </header>
+    <h1>Perfil de usuário</h1>
+    <div id="user-info">
+      <div class="form-group row">
+          <div class="col-sm-1">
+            <input type="button" id="btnUpdate" value="salvar">
+          </div>
+          <br>
+          <div class="col-sm-2">
+            <input type="button" onclick="fecharPopup()" value="fechar">
+          </div>
+        </div>
+      </div>
+    </div>
+<hr>
+  <div class="animais"> <h1>Animais</h1> </div>
+  
+    <div class="row"id="animal-cards"></div>
+  
+
+    <script src="app.perfil_usuario.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cadastro de Animais</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="stylecadanimais.css">
+</head>
+
+<body>
+    <h1>Listagem de Animais</h1>
+
+    <div class="container">
+        <div class="row">
+            <div id="msg" class="col-sm-10 offset-sm-1 ">
+                <!--<div class="alert alert-warning">Animal não encontrad.</div>-->
+            </div>
+        </div>
+
+        <div class="row">
+            <div id="msg" class="col-sm-2 offset-sm-10 ">
+                <a href="indexcadanimais.html"><input type="button" class="btn btn-warning" id="btnClear" value="Cadastro"></a>
+            </div>
+        </div>
+
+        <form id="form-animais">
+            <div class="form-group row">
+              
+                <div class="col-sm-8">
+                    <select name="filtro_porte" id="filtro_porte" onchange="ListaAnimais()"
+                        class="form-control">
+                        <option value="">Selecione o porte</option>
+                        <option value="Pequeno">Pequeno</option>
+                        <option value="Médio">Médio</option>
+                        <option value="Grande">Grande</option>
+
+                    </select>
+                </div>
+            </div>
+        </form>
+
+
+        <div class="row">
+
+            <div class="col-sm-12">
+                <div class="table-responsive">
+                    <table id="grid-animais" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nome</th>
+                                <th scope="col">Idade</th>
+                                <th scope="col">Porte</th>
+                                <th scope="col">Responsavel</th>
+                                <th scope="col">Descrição</th>
+                                <th scope="col">Imagem</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-animais">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="appcadanimais.js"></script>
+    <script>
+        // carrega os dados a partir da API JSONServer
+        var db = []
+        readAnimais(dados => {
+            db = dados;
+            ListaAnimais()
+        });
+
+        // função para listar na tabela os animais que estão associados aos filtros 
+        function ListaAnimais() {
+
+            // Obtem os dados informados pelo usuário nos filtros
+            
+            let fcg = document.getElementById('filtro_porte').value;
+
+            // limpa a lista de animais apresentados
+            tableAnimais = document.getElementById("table-animais");
+            tableAnimais.innerHTML = "";
+
+            // Popula a tabela com os registros do banco de dados
+            for (let index = 0; index < db.length; index++) {
+                const animais = db[index];
+
+                // Verifica se os dados do animais batem com os filtros
+               // if (((animais.cidade == fc) || (fc == '')) &&
+                if  ((animais.porte == fcg) || (fcg == '')) {
+
+                    // Inclui o animal na tabela    
+                    tableAnimais.innerHTML += `<tr><td scope="row">${animais.id}</td>
+                                                    <td>${animais.nome}</td>
+                                                    <td>${animais.idade}</td>
+                                                    <td>${animais.porte}</td>
+                                                    <td>${animais.responsavel}</td>
+                                                    <td>${animais.descricao}</td>
+                                                    <td>${animais.imagem}</td>
+                                                </tr>`;
+                }
+            }
+
+        }
+    </script>
+
+</body>
+
+</html>
